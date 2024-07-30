@@ -1,0 +1,18 @@
+@layout()
+  @!ui.breadcrump({links: [
+    {href: route('exercises.index'), label: "Les exercices"}
+  ], class: "mb-3"})
+  <h2 class="text-3xl mb-6">Liste des exercices ({{exercises.length}})</h2>
+  <ul>
+    @each(exercise in exercises)
+    <li class="w-full">
+      @!exercises.card({
+        exercise,
+        user: exercise.user,
+        href: route('exercises.show', {id: exercise.id}),
+        class: "mb-6"
+      })
+    </li>
+    @end
+  </ul>
+@end

@@ -1,0 +1,11 @@
+@layout()
+  @!ui.breadcrump({links: [
+    {href: route('users.index'), label: "Utilisateurs"}
+  ], class: "mb-3"})
+  <h1 class="text-3xl">Liste des utilisateurs</h1>
+  <ul>
+    @each(user in users)
+      <li><a href="{{route('users.show', {id: user.id})}}">{{user.username}}</a> - ({{user.$extras.exercises_count}})</li>
+    @end
+  </ul>
+@end

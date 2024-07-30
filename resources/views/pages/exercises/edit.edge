@@ -1,0 +1,16 @@
+@layout()
+  <form action="{{route('exercises.update', {id: "test"})}}" method="PUT">
+    {{csrfField()}}
+    <div>
+      <label>Titre</label>
+      <input name="title" />
+    </div>
+    <div>
+      <label>Contenu de l'exercice</label>
+      <textarea name="content"></textarea>
+    </div>
+    @ui.button({type: "submit"})
+      Sauvegarder
+    @end
+  </form>
+@end

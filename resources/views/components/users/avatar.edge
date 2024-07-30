@@ -1,0 +1,11 @@
+@let(classSizes = size ? `w-${size} h-${size}` : 'w-10 h-10' )
+<a href="{{route('users.show', {id: user.id})}}">
+  @if(user.avatarUrl != null)
+    <img class="{{classSizes}} rounded-full" src="{{user.avatarUrl}}"
+      alt="{{user.username}}'s avatar" />
+  @else
+  <div class="{{classSizes}} relative inline-flex items-center justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+      <span class="font-medium text-gray-600 dark:text-gray-300">AV</span>
+  </div>
+  @end
+</a>

@@ -1,0 +1,30 @@
+@let(classNames = 'block p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700')
+<div {{ $props.merge({class: [classNames]}).toAttrs() }}>
+  <div class="relative flex items-center space-x-3">
+    @if(user)
+      @!users.avatar({user: exercise.user, size: 10})
+    @end
+
+    <div class="flex-1">
+
+
+  <h5 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+    <a href="{{route('exercises.show', {id: exercise.id})}}">
+      {{exercise.title}}
+    </a>
+  </h5>
+  <p class="text-sm text-gray-400 font-light">
+    Posté
+    @if(user)
+      par <a href="{{route('users.show', {id: user.id})}}">{{user.username}}</a>,
+    @end
+    le {{exercise.createdAt}}
+  </p>
+    </div>
+    @!exercises.status({status: exercise.exerciseStatus})
+  </div>
+
+  <p class="font-normal text-gray-700 dark:text-gray-400">
+    {{excerpt(exercise.content, 100)}}
+  </p>
+</div>

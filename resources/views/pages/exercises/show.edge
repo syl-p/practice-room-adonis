@@ -1,0 +1,21 @@
+@layout()
+  @!ui.breadcrump({links: [
+    {href: route('exercises.index'), label: "Les exercices"},
+    {href: route('exercises.show', {id: exercise.id}), label: exercise.title, class: "opacity-75"}
+  ], class: "mb-3"})
+
+  <header class="flex space-x-3 items-center mb-3">
+    @!users.avatar({user: exercise.user})
+    <div class="flex-1">
+      <h1 class="text-3xl">{{exercise.title}}</h1>
+      <div class="flex items-center">
+        <p class="text-sm text-gray-400 font-light">
+          Posté par <a href="{{route('users.show', {id: exercise.user.id})}}">
+            {{exercise.user.username}}
+          </a> le {{exercise.createdAt}}
+        </p>
+      </div>
+    </div>
+  </header>
+  <p>{{{exercise.content}}}</p>
+@end
