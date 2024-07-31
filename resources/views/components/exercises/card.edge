@@ -6,20 +6,18 @@
     @end
 
     <div class="flex-1">
-
-
-  <h5 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-    <a href="{{route('exercises.show', {id: exercise.id})}}">
-      {{exercise.title}}
-    </a>
-  </h5>
-  <p class="text-sm text-gray-400 font-light">
-    Posté
-    @if(user)
-      par <a href="{{route('users.show', {id: user.id})}}">{{user.username}}</a>,
-    @end
-    le {{exercise.createdAt}}
-  </p>
+      <h5 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <a href="{{route('exercises.show', {id: exercise.id})}}">
+          {{exercise.title}}
+        </a>
+      </h5>
+      <p class="text-sm text-gray-400 font-light">
+        Posté
+        @if(user)
+          par <a href="{{route('users.show', {id: user.id})}}">{{user.username}}</a>,
+        @end
+        le {{exercise.createdAt}}
+      </p>
     </div>
     @!exercises.status({status: exercise.exerciseStatus})
   </div>

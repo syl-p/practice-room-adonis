@@ -1,0 +1,42 @@
+<div class="flex-1 w-full flex space-x-4 justify-between">
+  <div class="self-center">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+    </svg>
+  </div>
+  <div class="flex space-x-4 items-center">
+    <div class="hidden self-center md:block">
+      {{auth.user.username}}
+    </div>
+
+    <div class="relative" data-controller="dropdown" data-dropdown-toggle-class="hidden">
+      <button type="button" data-dropdown-target="button"
+        data-action="click->dropdown#toggle"
+        class="flex text-sm bg-white rounded-full group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+        id="user-menu-button">
+        <span class="sr-only">Open user menu</span>
+        @!users.avatar({user: auth.user})
+      </button>
+      <div
+        data-dropdown-target="menu"
+        class="hidden absolute right-0 z-[500] mt-4 w-56 bg-white rounded-md ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none divide-y divide-gray-100" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+        <div class="py-1" role="none">
+          <p class="truncate px-3.5 py-3">
+            <span class="block text-xs text-gray-500" role="none">Connecté en tant que {{auth.user.username}}</span>
+            <span class="mt-0.5 font-semibold" role="none">
+              {{auth.user.email}}
+            </span>
+          </p>
+        </div>
+        <ul class="px-4 py-2" role="none">
+          <li>
+            <form method="post" action="{{route('auth.login.exit')}}">
+              {{csrfField()}}
+              <button type="submit" class="text-sm text-gray-700">Se déconnecter</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
