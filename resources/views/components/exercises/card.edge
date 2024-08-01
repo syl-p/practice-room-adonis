@@ -25,4 +25,13 @@
   <p class="font-normal text-gray-700 dark:text-gray-400">
     {{excerpt(exercise.content, 100)}}
   </p>
+
+  @if(auth.user)
+    <form method="post" action="{{route('practices.toggle', {exerciseId: exercise.id})}}">
+      {{csrfField()}}
+      @ui.button({class: "mt-3"})
+        Ajouter a ma pratique
+      @end
+    </form>
+  @end
 </div>

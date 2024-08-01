@@ -1,0 +1,20 @@
+@layout()
+  <header class="mb-6 py-8 px-4 lg:py-16 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12 mb-8">
+    <h1 class="text-3xl lg:text-4xl">
+      Bienvenue {{auth.user.username}}
+    </h1>
+    <p class="font-light text-gray-500">
+      Tu es ici sur ton espace personnel, il te permet de visualiser l'évolution de ta pratique mais aussi l'avancé de tes objectifs.
+    </p>
+  </header>
+  <section>
+    <h2 class="text-2xl mb-3">Pratiqué aujourd'hui</h2>
+    <ul class="divide-y-2">
+      @each(exercise in practices)
+        <li>
+          @!practices.item({exercise})
+        </li>
+      @end
+    </ul>
+  </section>
+@end

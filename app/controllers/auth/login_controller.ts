@@ -13,7 +13,7 @@ export default class LoginController {
     const user = await User.verifyCredentials(email, password)
 
     await auth.use('web').login(user)
-    return response.redirect().toRoute('home')
+    return response.redirect().toRoute('dashboard.index')
   }
 
   async exit({ auth, response }: HttpContext) {

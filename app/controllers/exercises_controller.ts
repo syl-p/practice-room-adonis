@@ -4,8 +4,10 @@ import Exercise from '#models/exercise'
 import { HttpContext } from '@adonisjs/core/http'
 
 export default class ExercisesController {
-  async index({ view }: HttpContext) {
+  async index({ view, request }: HttpContext) {
+    const qs = request.qs()
     const exercises = await Exercise.query()
+      .if(qs.search, (query) => query.whereILike('title', `%${qs.search}%`))
       .preload('user')
       .preload('exerciseStatus')
       .apply((scope) => scope.inPublic())

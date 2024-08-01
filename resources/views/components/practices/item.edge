@@ -1,0 +1,11 @@
+<div class="flex space-x-3 py-3 items-center">
+  @!users.avatar({user: exercise.user, href: route('users.show', {id: exercise.user.id})})
+  <div>
+    <p>
+      <a href="{{route('exercises.show', {id: exercise.id})}}">
+        {{exercise.title}}
+      </a> - {{exercise.$extras.pivot_duration}}
+    </p>
+    <p class="text-sm text-gray-400 font-light">{{excerpt(exercise.content, 100)}}</p>
+  </div>
+</div>

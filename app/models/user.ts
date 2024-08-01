@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasMany, manyToMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, computed, hasMany, manyToMany, scope } from '@adonisjs/lucid/orm'
 import Exercise from './exercise.js'
 import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
 import { compose } from '@adonisjs/core/helpers'

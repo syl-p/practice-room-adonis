@@ -13,10 +13,17 @@ const RegisterController = () => import('#controllers/auth/register_controller')
 const LoginController = () => import('#controllers/auth/login_controller')
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
+const PracticesController = () => import('#controllers/practices_controller')
+const DashboardController = () => import('#controllers/dashboard_controller')
 
 router.on('/').render('pages/home').as('home')
 router.resource('exercises', ExercisesController)
 router.resource('users', UsersController)
+
+router
+  .post('/practices/:exerciseId/toggle', [PracticesController, 'toggle'])
+  .as('practices.toggle')
+  .use(middleware.auth())
 
 router
   .group(() => {
@@ -37,11 +44,7 @@ router
 
 router
   .group(() => {
-    router
-      .get('/', async (ctx) => {
-        return 'You are in'
-      })
-      .as('index')
+    router.get('/', [DashboardController, 'index']).as('index')
   })
   .prefix('/dashboard')
   .as('dashboard')
